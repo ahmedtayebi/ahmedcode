@@ -91,7 +91,7 @@ export default function Footer() {
                         className="space-y-3"
                     >
                         <div className="font-code text-lg text-text-primary">
-                            &gt; ahmed.dev
+                            &gt; ahmed.code
                         </div>
                         <p className="font-display text-sm text-text-muted">
                             Building products people love

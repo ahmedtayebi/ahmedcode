@@ -59,7 +59,7 @@ export default function Navbar() {
             >
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
                     <div className="font-code text-xl font-medium text-text-primary">
-                        &gt; ahmed.dev
+                        &gt; ahmed.code
                         <span className="cursor-blink ml-1 inline-block">
                             _
                         </span>
