@@ -18,8 +18,9 @@ export default function GlowButton({
     onClick,
     href,
     target,
+    type,
     className,
-}: GlowButtonProps) {
+}: GlowButtonProps & { type?: "button" | "submit" | "reset" }) {
     const baseClasses =
         "inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-medium transition-all duration-200 active:scale-[0.97]";
 
@@ -33,7 +34,7 @@ export default function GlowButton({
     };
 
     const Component = href ? motion.a : motion.button;
-    const props = href ? { href, target } : { onClick };
+    const props = href ? { href, target } : { onClick, type };
 
     return (
         <Component

@@ -58,7 +58,7 @@ export default function Process() {
         <section id="process" className="relative py-24">
             <div className="mx-auto max-w-7xl px-6">
                 <AnimatedSection>
-                    <SectionLabel>// my workflow</SectionLabel>
+                    <SectionLabel number="03" name="process" />
                     <h2 className="font-display mb-6 text-4xl font-bold text-text-primary md:text-5xl">
                         How I Work
                     </h2>

@@ -180,7 +180,7 @@ export default function Contact() {
                                 />
                             </div>
 
-                            <GlowButton variant="terminal" onClick={() => { }}>
+                            <GlowButton variant="terminal" type="submit">
                                 send_message
                             </GlowButton>
                         </motion.form>
