@@ -134,15 +134,15 @@ export default function Projects() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="mb-24 overflow-hidden rounded-2xl border border-border-subtle bg-surface shadow-lg transition-all duration-500 hover:shadow-[0_0_50px_rgba(108,99,255,0.2)]"
+                        className="mb-24 w-full overflow-hidden rounded-2xl border border-border-subtle bg-surface shadow-lg transition-all duration-500 hover:shadow-[0_0_50px_rgba(108,99,255,0.2)]"
                     >
-                        <div className="grid lg:grid-cols-2">
+                        <div className="flex flex-col lg:grid lg:grid-cols-2">
                             {/* Left: Project Preview */}
                             <motion.div
                                 ref={featuredRef}
                                 onMouseMove={handleMouseMove}
                                 onMouseLeave={handleMouseLeave}
-                                className="group relative min-h-[500px] overflow-hidden rounded-2xl bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-black"
+                                className="group relative min-h-[250px] w-full overflow-hidden bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-black lg:min-h-[500px]"
                             >
                                 <motion.div
                                     style={{
@@ -162,11 +162,11 @@ export default function Projects() {
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
 
                                     {/* Text overlay */}
-                                    <div className="absolute bottom-6 left-6">
-                                        <div className="font-display text-2xl font-bold text-white">
+                                    <div className="absolute bottom-6 left-6 right-6">
+                                        <div className="font-display w-full break-words text-2xl font-bold text-white">
                                             Ofuq Lab
                                         </div>
-                                        <div className="mt-1 text-sm text-gray-300">
+                                        <div className="mt-1 w-full break-words text-sm text-gray-300">
                                             Cinematic Editing Studio
                                         </div>
                                     </div>
@@ -174,7 +174,7 @@ export default function Projects() {
                             </motion.div>
 
                             {/* Right: Content */}
-                            <div className="p-8 lg:p-12">
+                            <div className="w-full min-w-0 overflow-hidden p-6 md:p-8 lg:p-12">
                                 <motion.div
                                     initial={{ opacity: 0, y: 10 }}
                                     whileInView={{ opacity: 1, y: 0 }}
@@ -184,26 +184,26 @@ export default function Projects() {
                                     <div className="font-code mb-3 text-xs uppercase tracking-widest text-accent">
                                         FEATURED PROJECT
                                     </div>
-                                    <h3 className="font-display mb-3 text-3xl font-bold text-text-primary md:text-4xl">
+                                    <h3 className="font-display mb-3 w-full break-words text-2xl font-bold text-text-primary md:text-3xl lg:text-4xl">
                                         Ofuq Lab
                                     </h3>
-                                    <p className="mb-8 text-lg italic text-text-secondary">
+                                    <p className="mb-8 w-full break-words text-base italic text-text-secondary md:text-lg">
                                         "Where cinematic identity meets immersive digital
                                         engineering."
                                     </p>
                                 </motion.div>
 
                                 {/* Tabs */}
-                                <div className="mb-8">
+                                <div className="mb-8 w-full overflow-hidden">
                                     {/* Tab Bar */}
-                                    <div className="mb-4 flex gap-1 border-b border-border-subtle">
+                                    <div className="mb-4 flex flex-wrap gap-1 border-b border-border-subtle">
                                         {tabs.map((tab) => (
                                             <button
                                                 key={tab}
                                                 onClick={() => setActiveTab(tab)}
-                                                className={`font-code cursor-pointer px-4 py-2 text-sm transition-all duration-200 ${activeTab === tab
-                                                        ? "border-b-2 border-accent bg-surface/50 text-accent"
-                                                        : "text-text-muted hover:text-text-secondary"
+                                                className={`font-code cursor-pointer px-3 py-2 text-xs transition-all duration-200 md:px-4 md:text-sm ${activeTab === tab
+                                                    ? "border-b-2 border-accent bg-surface/50 text-accent"
+                                                    : "text-text-muted hover:text-text-secondary"
                                                     }`}
                                             >
                                                 {tab}
@@ -220,7 +220,7 @@ export default function Projects() {
                                             duration: 0.25,
                                             ease: "easeOut",
                                         }}
-                                        className="min-h-[150px]"
+                                        className="min-h-[150px] w-full min-w-0 break-words"
                                     >
                                         {renderTabContent()}
                                     </motion.div>

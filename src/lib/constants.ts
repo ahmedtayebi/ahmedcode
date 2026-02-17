@@ -35,22 +35,32 @@ export const NAV_LINKS: NavLink[] = [
 export const SOCIAL_LINKS: SocialLink[] = [
     {
         label: "GitHub",
-        href: "https://github.com/tayebiahmed",
+        href: "https://github.com/ahmedtayebi",
         icon: "github",
     },
     {
-        label: "LinkedIn",
-        href: "https://linkedin.com/in/tayebiahmed",
-        icon: "linkedin",
+        label: "Instagram",
+        href: "https://www.instagram.com/ahm_eddev?igsh=d3lrb3R1NGxwZHpt",
+        icon: "instagram",
     },
     {
-        label: "Dribbble",
-        href: "https://dribbble.com/tayebiahmed",
-        icon: "dribbble",
+        label: "Facebook",
+        href: "https://www.facebook.com/share/1AH62JUzgG/",
+        icon: "facebook",
     },
     {
-        label: "Email",
-        href: "mailto:hello@tayebiahmed.com",
-        icon: "email",
+        label: "X",
+        href: "https://x.com/tayebiahmed",
+        icon: "x",
+    },
+    {
+        label: "TikTok",
+        href: "https://tiktok.com/@ahmedta_dev",
+        icon: "tiktok",
+    },
+    {
+        label: "Behance",
+        href: "https://behance.net/tayebiahmed",
+        icon: "behance",
     },
 ];
