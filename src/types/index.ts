@@ -11,6 +11,7 @@ export interface Project {
     type: "mobile" | "web" | "design";
     featured: boolean;
     gradient: string;
+    image?: string;
     links: {
         github?: string;
         live?: string;

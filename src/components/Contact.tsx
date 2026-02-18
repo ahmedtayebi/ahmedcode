@@ -244,7 +244,7 @@ export default function Contact() {
                         <p className="font-display mb-6 text-sm text-text-muted">
                             Or reach me directly:
                         </p>
-                        <div className="flex justify-center gap-6">
+                        <div className="mx-auto flex max-w-[280px] flex-wrap justify-center gap-2 px-4 md:max-w-none md:gap-6 md:px-0">
                             {SOCIAL_LINKS.map((social) => (
                                 <motion.a
                                     key={social.href}
@@ -252,12 +252,14 @@ export default function Contact() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     whileHover={{ scale: 1.1 }}
-                                    className="flex flex-col items-center gap-2 text-text-muted transition-all hover:text-accent hover:drop-shadow-[0_0_10px_rgba(108,99,255,0.5)]"
+                                    className="flex h-12 w-12 flex-col items-center justify-center gap-1 rounded-xl border border-border-subtle bg-surface text-text-muted transition-all hover:border-accent hover:text-accent hover:drop-shadow-[0_0_10px_rgba(108,99,255,0.3)] md:h-auto md:w-auto md:border-none md:bg-transparent"
                                     data-cursor="pointer"
                                     aria-label={social.label}
                                 >
-                                    {renderSocialIcon(social.icon)}
-                                    <span className="font-code text-xs">
+                                    <div className="scale-75 md:scale-100">
+                                        {renderSocialIcon(social.icon)}
+                                    </div>
+                                    <span className="hidden font-code text-[10px] md:block md:text-xs">
                                         {social.label}
                                     </span>
                                 </motion.a>

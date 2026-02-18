@@ -142,7 +142,7 @@ export default function Projects() {
                                 ref={featuredRef}
                                 onMouseMove={handleMouseMove}
                                 onMouseLeave={handleMouseLeave}
-                                className="group relative min-h-[250px] w-full overflow-hidden bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-black lg:min-h-[500px]"
+                                className="group relative h-[300px] w-full overflow-hidden bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-black lg:h-[500px]"
                             >
                                 <motion.div
                                     style={{
@@ -157,6 +157,7 @@ export default function Projects() {
                                         fill
                                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                                         priority
+                                        sizes="(max-width: 768px) 100vw, 50vw"
                                     />
                                     {/* Dark gradient overlay */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
@@ -272,9 +273,6 @@ export default function Projects() {
                                             <ExternalLink size={16} />
                                         </GlowButton>
                                     </motion.div>
-                                    <GlowButton variant="ghost">
-                                        Open Case Study →
-                                    </GlowButton>
                                 </motion.div>
                             </div>
                         </div>
@@ -288,6 +286,7 @@ export default function Projects() {
                         viewport={{ once: true, amount: 0.1 }}
                         className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
                     >
+
                         {secondaryProjects.map((project, index) => (
                             <motion.div
                                 key={project.id}
@@ -295,13 +294,23 @@ export default function Projects() {
                                 whileHover={{ scale: 1.03, y: -4 }}
                                 className="flex flex-col overflow-hidden rounded-xl border border-border-subtle bg-surface transition-shadow duration-300 hover:shadow-[0_0_30px_rgba(108,99,255,0.15)]"
                             >
+
                                 <div
                                     style={{
                                         background: project.gradient,
                                     }}
-                                    className="relative h-48"
+                                    className="relative h-48 overflow-hidden"
                                 >
-                                    <div className="absolute right-4 top-4 font-code text-4xl font-bold text-white/30">
+                                    {project.image && (
+                                        <Image
+                                            src={project.image}
+                                            alt={project.title}
+                                            fill
+                                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        />
+                                    )}
+                                    <div className="absolute right-4 top-4 z-10 font-code text-4xl font-bold text-white/30">
                                         {project.number}
                                     </div>
                                 </div>
@@ -352,12 +361,18 @@ export default function Projects() {
                                         )}
                                     </div>
 
-                                    <button
-                                        className="font-code mt-auto text-left text-sm text-accent transition-all hover:underline"
-                                        data-cursor="pointer"
-                                    >
-                                        View Case Study →
-                                    </button>
+                                    {project.links?.live && (
+                                        <a
+                                            href={project.links.live}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="font-code mt-auto flex items-center gap-2 text-left text-sm text-accent transition-all hover:underline"
+                                            data-cursor="pointer"
+                                        >
+                                            Live Demo
+                                            <ExternalLink size={14} />
+                                        </a>
+                                    )}
                                 </div>
                             </motion.div>
                         ))}

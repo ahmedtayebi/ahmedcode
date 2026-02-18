@@ -176,14 +176,14 @@ export default function Footer() {
                         <p className="font-code text-xs text-text-muted">
                             Open to opportunities
                         </p>
-                        <div className="flex gap-4">
+                        <div className="mx-auto flex max-w-[280px] flex-wrap justify-center gap-3 px-4 md:mx-0 md:max-w-none md:justify-start md:gap-4 md:px-0">
                             {SOCIAL_LINKS.map((social) => (
                                 <a
                                     key={social.href}
                                     href={social.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-text-muted transition-colors hover:text-accent"
+                                    className="flex h-10 w-10 items-center justify-center rounded-lg border border-border-subtle bg-surface text-text-muted transition-colors hover:border-accent hover:text-accent md:h-8 md:w-8 md:border-none md:bg-transparent"
                                     data-cursor="pointer"
                                     aria-label={social.label}
                                 >
