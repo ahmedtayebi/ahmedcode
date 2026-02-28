@@ -287,7 +287,9 @@ export default function Projects() {
                         className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
                     >
 
-                        {secondaryProjects.map((project, index) => (
+                        {secondaryProjects.map((project) => {
+                            const isArabicProject = project.id === "lespub-dz";
+                            return (
                             <motion.div
                                 key={project.id}
                                 variants={fadeIn}
@@ -315,7 +317,10 @@ export default function Projects() {
                                     </div>
                                 </div>
 
-                                <div className="flex flex-1 flex-col p-6">
+                                <div
+                                    className={`flex flex-1 flex-col p-6 ${isArabicProject ? "text-right" : "text-left"}`}
+                                    dir={isArabicProject ? "rtl" : "ltr"}
+                                >
                                     <h3 className="font-display mb-1 text-xl font-bold text-text-primary">
                                         {project.title}
                                     </h3>
@@ -323,25 +328,29 @@ export default function Projects() {
                                         {project.tagline}
                                     </p>
 
-                                    <div className="mb-3 text-xs text-text-muted">
-                                        <p className="line-clamp-2">
-                                            <span className="text-code-blue">
-                                                Problem:
-                                            </span>{" "}
-                                            {project.problem}
-                                        </p>
-                                        <p className="line-clamp-2">
-                                            <span className="text-code-blue">
-                                                Solution:
-                                            </span>{" "}
-                                            {project.solution}
-                                        </p>
+                                    <div className="mb-3 space-y-3 text-xs text-text-muted">
+                                        <div className="space-y-1">
+                                            <p className="text-code-blue">
+                                                {isArabicProject ? "المشكل:" : "Problem:"}
+                                            </p>
+                                            <p className={isArabicProject ? "leading-relaxed" : "line-clamp-2"}>
+                                                {project.problem}
+                                            </p>
+                                        </div>
+                                        <div className="space-y-1">
+                                            <p className="text-code-blue">
+                                                {isArabicProject ? "الحل:" : "Solution:"}
+                                            </p>
+                                            <p className={isArabicProject ? "leading-relaxed" : "line-clamp-2"}>
+                                                {project.solution}
+                                            </p>
+                                        </div>
                                     </div>
 
                                     {project.results && (
                                         <div className="mb-3 rounded border border-accent/20 bg-accent-glow px-2 py-1">
                                             <p className="font-code line-clamp-1 text-xs text-accent">
-                                                ✓ Results
+                                                {isArabicProject ? "✓ النتيجة" : "✓ Results"}
                                             </p>
                                         </div>
                                     )}
@@ -366,16 +375,17 @@ export default function Projects() {
                                             href={project.links.live}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="font-code mt-auto flex items-center gap-2 text-left text-sm text-accent transition-all hover:underline"
+                                            className={`font-code mt-auto flex items-center gap-2 text-sm text-accent transition-all hover:underline ${isArabicProject ? "w-fit self-end justify-start text-right" : "text-left"}`}
                                             data-cursor="pointer"
                                         >
-                                            Live Demo
+                                            {isArabicProject ? "عرض مباشر" : "Live Demo"}
                                             <ExternalLink size={14} />
                                         </a>
                                     )}
                                 </div>
                             </motion.div>
-                        ))}
+                            );
+                        })}
                     </motion.div>
                 </AnimatedSection>
             </div>
