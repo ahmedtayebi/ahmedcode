@@ -59,7 +59,7 @@ export default function Navbar() {
             >
                 <div className="mx-auto flex max-w-7xl items-center justify-between">
                     <div className="font-display text-xl font-bold tracking-tight text-text-primary">
-                        <span className="text-accent">&gt;ahmed.code</span>
+                        <span className="text-accent">&gt;  ahmed</span>.code
                         <span className="cursor-blink ml-0.5 inline-block text-accent">
                             _
                         </span>
