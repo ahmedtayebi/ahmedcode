@@ -3,7 +3,8 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, X, ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
+import { AnimatePresence } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
 import TechTag from "@/components/TechTag";
@@ -15,6 +16,8 @@ export default function Projects() {
     const secondaryProjects = projects.filter((p) => !p.featured);
     const [parallax, setParallax] = useState({ x: 0, y: 0 });
     const [activeTab, setActiveTab] = useState("Problem");
+    const [selectedGallery, setSelectedGallery] = useState<string[] | null>(null);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const featuredRef = useRef<HTMLDivElement>(null);
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -119,8 +122,18 @@ export default function Projects() {
         }
     };
 
+    const nextImage = () => {
+        if (!selectedGallery) return;
+        setCurrentImageIndex((prev) => (prev + 1) % selectedGallery.length);
+    };
+
+    const prevImage = () => {
+        if (!selectedGallery) return;
+        setCurrentImageIndex((prev) => (prev - 1 + selectedGallery.length) % selectedGallery.length);
+    };
+
     return (
-        <section id="projects" className="px-6 py-24">
+        <section id="projects" className="mesh-gradient relative overflow-hidden py-24">
             <div className="mx-auto max-w-7xl">
                 <AnimatedSection>
                     <SectionLabel number="02" name="projects" />
@@ -130,11 +143,11 @@ export default function Projects() {
 
                     {/* Featured Project: Ofuq Lab */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="mb-24 w-full overflow-hidden rounded-2xl border border-border-subtle bg-surface shadow-lg transition-all duration-500 hover:shadow-[0_0_50px_rgba(108,99,255,0.2)]"
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="mb-24 w-full overflow-hidden rounded-2xl border border-white/5 bg-bg-secondary/50 backdrop-blur-xl transition-all duration-500 hover:shadow-[0_0_80px_rgba(129,140,248,0.15)]"
                     >
                         <div className="flex flex-col lg:grid lg:grid-cols-2">
                             {/* Left: Project Preview */}
@@ -142,72 +155,79 @@ export default function Projects() {
                                 ref={featuredRef}
                                 onMouseMove={handleMouseMove}
                                 onMouseLeave={handleMouseLeave}
-                                className="group relative h-[300px] w-full overflow-hidden bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-black lg:h-[500px]"
+                                className="group relative h-[300px] w-full overflow-hidden bg-bg-primary lg:h-[600px]"
                             >
                                 <motion.div
                                     style={{
-                                        transform: `translate(${parallax.x}px, ${parallax.y}px)`,
+                                        transform: `translate(${parallax.x * 2}px, ${parallax.y * 2}px) scale(1.05)`,
                                     }}
-                                    transition={{ type: "spring", stiffness: 150 }}
+                                    transition={{ type: "spring", stiffness: 100, damping: 20 }}
                                     className="relative h-full w-full"
                                 >
                                     <Image
                                         src="/images/p1/coverp1.png"
                                         alt="Ofuq Lab - Cinematic Editing Studio Website"
                                         fill
-                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                        className="object-cover transition-opacity duration-700 group-hover:opacity-90"
                                         priority
                                         sizes="(max-width: 768px) 100vw, 50vw"
                                     />
-                                    {/* Dark gradient overlay */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                                    {/* Glassy overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-transparent to-transparent opacity-80" />
 
                                     {/* Text overlay */}
-                                    <div className="absolute bottom-6 left-6 right-6">
-                                        <div className="font-display w-full break-words text-2xl font-bold text-white">
+                                    <div className="absolute bottom-8 left-8 right-8">
+                                        <div className="font-display text-3xl font-bold text-white tracking-tight">
                                             Ofuq Lab
                                         </div>
-                                        <div className="mt-1 w-full break-words text-sm text-gray-300">
-                                            Cinematic Editing Studio
+                                        <div className="mt-2 text-sm text-text-secondary uppercase tracking-widest bg-white/5 backdrop-blur-md px-3 py-1 rounded-full w-fit border border-white/10">
+                                            Cinematic Studio
                                         </div>
                                     </div>
                                 </motion.div>
                             </motion.div>
 
                             {/* Right: Content */}
-                            <div className="w-full min-w-0 overflow-hidden p-6 md:p-8 lg:p-12">
+                            <div className="w-full min-w-0 overflow-hidden p-8 md:p-10 lg:p-16 flex flex-col justify-center">
                                 <motion.div
-                                    initial={{ opacity: 0, y: 10 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: 0.1 }}
+                                    transition={{ delay: 0.2 }}
                                 >
-                                    <div className="font-code mb-3 text-xs uppercase tracking-widest text-accent">
-                                        FEATURED PROJECT
+                                    <div className="font-code mb-4 text-[10px] uppercase tracking-[0.3em] text-accent font-bold">
+                                        Case Study
                                     </div>
-                                    <h3 className="font-display mb-3 w-full break-words text-2xl font-bold text-text-primary md:text-3xl lg:text-4xl">
+                                    <h3 className="font-display mb-4 w-full break-words text-3xl font-bold text-text-primary md:text-4xl lg:text-5xl tracking-tight">
                                         Ofuq Lab
                                     </h3>
-                                    <p className="mb-8 w-full break-words text-base italic text-text-secondary md:text-lg">
-                                        "Where cinematic identity meets immersive digital
-                                        engineering."
+                                    <p className="mb-10 w-full break-words text-lg text-text-secondary leading-relaxed border-l-2 border-accent/30 pl-6 italic">
+                                        &quot;Where cinematic identity meets immersive digital
+                                        engineering.&quot;
                                     </p>
                                 </motion.div>
 
                                 {/* Tabs */}
-                                <div className="mb-8 w-full overflow-hidden">
+                                <div className="mb-10 w-full overflow-hidden">
                                     {/* Tab Bar */}
-                                    <div className="mb-4 flex flex-wrap gap-1 border-b border-border-subtle">
+                                    <div className="mb-6 flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
                                         {tabs.map((tab) => (
                                             <button
                                                 key={tab}
                                                 onClick={() => setActiveTab(tab)}
-                                                className={`font-code cursor-pointer px-3 py-2 text-xs transition-all duration-200 md:px-4 md:text-sm ${activeTab === tab
-                                                    ? "border-b-2 border-accent bg-surface/50 text-accent"
+                                                className={`relative font-code whitespace-nowrap px-4 py-2 text-xs transition-colors duration-300 rounded-lg ${activeTab === tab
+                                                    ? "text-accent"
                                                     : "text-text-muted hover:text-text-secondary"
                                                     }`}
                                             >
-                                                {tab}
+                                                {activeTab === tab && (
+                                                    <motion.div
+                                                        layoutId="activeTab"
+                                                        className="absolute inset-0 bg-accent/10 border border-accent/20 rounded-lg"
+                                                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                                    />
+                                                )}
+                                                <span className="relative z-10">{tab}</span>
                                             </button>
                                         ))}
                                     </div>
@@ -215,13 +235,13 @@ export default function Projects() {
                                     {/* Tab Content */}
                                     <motion.div
                                         key={activeTab}
-                                        initial={{ opacity: 0, y: 8 }}
+                                        initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{
-                                            duration: 0.25,
+                                            duration: 0.3,
                                             ease: "easeOut",
                                         }}
-                                        className="min-h-[150px] w-full min-w-0 break-words"
+                                        className="min-h-[140px] w-full min-w-0 break-words"
                                     >
                                         {renderTabContent()}
                                     </motion.div>
@@ -290,105 +310,192 @@ export default function Projects() {
                         {secondaryProjects.map((project) => {
                             const isArabicProject = project.id === "lespub-dz";
                             return (
-                            <motion.div
-                                key={project.id}
-                                variants={fadeIn}
-                                whileHover={{ scale: 1.03, y: -4 }}
-                                className="flex flex-col overflow-hidden rounded-xl border border-border-subtle bg-surface transition-shadow duration-300 hover:shadow-[0_0_30px_rgba(108,99,255,0.15)]"
-                            >
-
-                                <div
-                                    style={{
-                                        background: project.gradient,
-                                    }}
-                                    className="relative h-48 overflow-hidden"
+                                <motion.div
+                                    key={project.id}
+                                    variants={fadeIn}
+                                    whileHover={{ y: -8 }}
+                                    className="flex flex-col overflow-hidden rounded-2xl border border-white/5 bg-bg-secondary transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.5)] group"
                                 >
-                                    {project.image && (
-                                        <Image
-                                            src={project.image}
-                                            alt={project.title}
-                                            fill
-                                            className="object-cover transition-transform duration-500 group-hover:scale-110"
-                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                        />
-                                    )}
-                                    <div className="absolute right-4 top-4 z-10 font-code text-4xl font-bold text-white/30">
-                                        {project.number}
-                                    </div>
-                                </div>
-
-                                <div
-                                    className={`flex flex-1 flex-col p-6 ${isArabicProject ? "text-right" : "text-left"}`}
-                                    dir={isArabicProject ? "rtl" : "ltr"}
-                                >
-                                    <h3 className="font-display mb-1 text-xl font-bold text-text-primary">
-                                        {project.title}
-                                    </h3>
-                                    <p className="mb-4 text-sm text-text-secondary">
-                                        {project.tagline}
-                                    </p>
-
-                                    <div className="mb-3 space-y-3 text-xs text-text-muted">
-                                        <div className="space-y-1">
-                                            <p className="text-code-blue">
-                                                {isArabicProject ? "المشكل:" : "Problem:"}
-                                            </p>
-                                            <p className={isArabicProject ? "leading-relaxed" : "line-clamp-2"}>
-                                                {project.problem}
-                                            </p>
-                                        </div>
-                                        <div className="space-y-1">
-                                            <p className="text-code-blue">
-                                                {isArabicProject ? "الحل:" : "Solution:"}
-                                            </p>
-                                            <p className={isArabicProject ? "leading-relaxed" : "line-clamp-2"}>
-                                                {project.solution}
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    {project.results && (
-                                        <div className="mb-3 rounded border border-accent/20 bg-accent-glow px-2 py-1">
-                                            <p className="font-code line-clamp-1 text-xs text-accent">
-                                                {isArabicProject ? "✓ النتيجة" : "✓ Results"}
-                                            </p>
-                                        </div>
-                                    )}
-
-                                    <div className="mb-4 flex flex-wrap gap-1.5">
-                                        {project.stack.slice(0, 3).map((tech) => (
-                                            <TechTag
-                                                key={tech}
-                                                label={tech}
-                                                size="sm"
+                                    <div
+                                        style={{
+                                            background: project.gradient,
+                                        }}
+                                        className="relative h-56 overflow-hidden"
+                                    >
+                                        {project.image && (
+                                            <Image
+                                                src={project.image}
+                                                alt={project.title}
+                                                fill
+                                                className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100"
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                             />
-                                        ))}
-                                        {project.stack.length > 3 && (
-                                            <span className="font-code rounded-md bg-surface px-2 py-0.5 text-xs text-text-muted">
-                                                +{project.stack.length - 3}
-                                            </span>
+                                        )}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-bg-secondary via-transparent to-transparent opacity-60" />
+                                        <div className="absolute right-6 top-6 z-10 font-code text-5xl font-bold text-white/10 italic">
+                                            {project.number}
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        className={`flex flex-1 flex-col p-8 ${isArabicProject ? "text-right" : "text-left"}`}
+                                        dir={isArabicProject ? "rtl" : "ltr"}
+                                    >
+                                        <h3 className="font-display mb-2 text-2xl font-bold text-text-primary tracking-tight">
+                                            {project.title}
+                                        </h3>
+                                        <p className="mb-6 text-sm text-text-secondary font-medium uppercase tracking-widest opacity-80">
+                                            {project.tagline}
+                                        </p>
+
+                                        <div className="mb-6 space-y-4 text-sm text-text-muted leading-relaxed">
+                                            <div className="space-y-1">
+                                                <p className="text-accent/80 font-code text-xs font-bold uppercase tracking-wider">
+                                                    {isArabicProject ? "التحدي:" : "Challenge:"}
+                                                </p>
+                                                <p className={isArabicProject ? "leading-relaxed" : "line-clamp-2"}>
+                                                    {project.problem}
+                                                </p>
+                                            </div>
+                                            <div className="space-y-1">
+                                                <p className="text-accent/80 font-code text-xs font-bold uppercase tracking-wider">
+                                                    {isArabicProject ? "الحل:" : "Solution:"}
+                                                </p>
+                                                <p className={isArabicProject ? "leading-relaxed" : "line-clamp-2"}>
+                                                    {project.solution}
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div className="mb-6 flex flex-wrap gap-2">
+                                            {project.stack.slice(0, 3).map((tech) => (
+                                                <div key={tech} className="px-3 py-1 bg-white/5 rounded-full border border-white/10 text-[10px] uppercase font-bold text-text-secondary tracking-wider">
+                                                    {tech}
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        {project.galleryImages && (
+                                            <motion.button
+                                                onClick={() => {
+                                                    setSelectedGallery(project.galleryImages!);
+                                                    setCurrentImageIndex(0);
+                                                }}
+                                                whileHover={{ x: isArabicProject ? -5 : 5 }}
+                                                className={`font-code mt-auto flex items-center gap-2 text-xs font-bold text-accent uppercase tracking-widest ${isArabicProject ? "w-fit self-end justify-start text-right" : "text-left"}`}
+                                                data-cursor="link"
+                                            >
+                                                {isArabicProject ? "معرض الصور" : "View Gallery"}
+                                                <ImageIcon size={14} />
+                                            </motion.button>
+                                        )}
+
+                                        {!project.galleryImages && project.links?.live && (
+                                            <motion.a
+                                                href={project.links.live}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                whileHover={{ x: isArabicProject ? -5 : 5 }}
+                                                className={`font-code mt-auto flex items-center gap-2 text-xs font-bold text-accent uppercase tracking-widest ${isArabicProject ? "w-fit self-end justify-start text-right" : "text-left"}`}
+                                                data-cursor="link"
+                                            >
+                                                {isArabicProject ? "عرض المشروع" : "Explore Case"}
+                                                <ExternalLink size={14} />
+                                            </motion.a>
                                         )}
                                     </div>
-
-                                    {project.links?.live && (
-                                        <a
-                                            href={project.links.live}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className={`font-code mt-auto flex items-center gap-2 text-sm text-accent transition-all hover:underline ${isArabicProject ? "w-fit self-end justify-start text-right" : "text-left"}`}
-                                            data-cursor="pointer"
-                                        >
-                                            {isArabicProject ? "عرض مباشر" : "Live Demo"}
-                                            <ExternalLink size={14} />
-                                        </a>
-                                    )}
-                                </div>
-                            </motion.div>
+                                </motion.div>
                             );
                         })}
                     </motion.div>
                 </AnimatedSection>
             </div>
+
+            {/* Gallery Modal */}
+            <AnimatePresence>
+                {selectedGallery && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setSelectedGallery(null)}
+                        className="fixed inset-0 z-[100] flex items-center justify-center bg-bg-primary/95 backdrop-blur-xl p-4 md:p-10 cursor-zoom-out"
+                    >
+                        <motion.button
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="absolute right-6 top-6 z-[110] p-2 text-white/50 hover:text-white transition-colors"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setSelectedGallery(null);
+                            }}
+                        >
+                            <X size={32} />
+                        </motion.button>
+
+                        <div
+                            className="relative flex h-full w-full max-w-5xl items-center justify-center cursor-default"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <motion.button
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                                onClick={prevImage}
+                                className="absolute left-0 z-10 hidden md:flex h-12 w-12 items-center justify-center rounded-full bg-white/5 text-white hover:bg-white/10 transition-colors"
+                            >
+                                <ChevronLeft size={24} />
+                            </motion.button>
+
+                            <div className="relative h-full w-full flex items-center justify-center">
+                                <AnimatePresence mode="wait">
+                                    <motion.div
+                                        key={currentImageIndex}
+                                        initial={{ opacity: 0, x: 20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        exit={{ opacity: 0, x: -20 }}
+                                        transition={{ duration: 0.3 }}
+                                        className="relative h-full w-full max-h-[80vh] flex items-center justify-center"
+                                    >
+                                        <Image
+                                            src={selectedGallery[currentImageIndex]}
+                                            alt={`Project screen ${currentImageIndex + 1}`}
+                                            width={1000}
+                                            height={2000}
+                                            className="h-full w-auto object-contain rounded-xl shadow-2xl"
+                                        />
+                                    </motion.div>
+                                </AnimatePresence>
+
+                                {/* Mobile Controls Overlay */}
+                                <div className="absolute inset-0 flex md:hidden">
+                                    <div className="w-1/2 h-full" onClick={prevImage} />
+                                    <div className="w-1/2 h-full" onClick={nextImage} />
+                                </div>
+                            </div>
+
+                            <motion.button
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                                onClick={nextImage}
+                                className="absolute right-0 z-10 hidden md:flex h-12 w-12 items-center justify-center rounded-full bg-white/5 text-white hover:bg-white/10 transition-colors"
+                            >
+                                <ChevronRight size={24} />
+                            </motion.button>
+
+                            {/* Pagination */}
+                            <div className="absolute bottom-[-40px] flex gap-2">
+                                {selectedGallery.map((_, i) => (
+                                    <button
+                                        key={i}
+                                        onClick={() => setCurrentImageIndex(i)}
+                                        className={`h-1.5 rounded-full transition-all duration-300 ${i === currentImageIndex ? "w-8 bg-accent" : "w-1.5 bg-white/20"}`}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 }

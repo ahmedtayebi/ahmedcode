@@ -55,7 +55,7 @@ export default function Process() {
     const lineInView = useInView(lineRef, { once: true, margin: "-100px" });
 
     return (
-        <section id="process" className="relative py-24">
+        <section id="process" className="mesh-gradient relative py-24">
             <div className="mx-auto max-w-7xl px-6">
                 <AnimatedSection>
                     <SectionLabel number="03" name="process" />
@@ -109,7 +109,7 @@ export default function Process() {
                                         variants={fadeUp}
                                         className="group"
                                     >
-                                        <div className="relative overflow-hidden rounded-2xl border border-border-subtle bg-surface/50 p-8 backdrop-blur-sm transition-all duration-500 hover:border-accent/50 hover:shadow-[0_8px_50px_rgba(108,99,255,0.15)]">
+                                        <div className="relative overflow-hidden rounded-2xl border border-border-subtle bg-surface p-8 transition-all duration-500 hover:border-accent/50 hover:shadow-[0_8px_50px_rgba(108,99,255,0.15)]">
                                             {/* Gradient Overlay */}
                                             <div
                                                 className={`absolute inset-0 bg-gradient-to-br ${step.gradient} opacity-0 transition-opacity duration-500 group-hover:opacity-100`}
@@ -118,7 +118,7 @@ export default function Process() {
                                             <div className="relative z-10">
                                                 {/* Icon */}
                                                 <div
-                                                    className={`mb-6 flex h-20 w-20 items-center justify-center rounded-xl ${step.iconBg} backdrop-blur-sm transition-transform duration-500 group-hover:scale-110`}
+                                                    className={`mb-6 flex h-20 w-20 items-center justify-center rounded-xl ${step.iconBg} transition-transform duration-500 group-hover:scale-110`}
                                                 >
                                                     <step.icon
                                                         className={`h-10 w-10 ${step.iconColor} transition-transform duration-500 group-hover:rotate-12`}
@@ -169,7 +169,7 @@ export default function Process() {
                                 variants={fadeUp}
                                 className="group"
                             >
-                                <div className="relative overflow-hidden rounded-2xl border border-border-subtle bg-surface/50 p-6 backdrop-blur-sm transition-all duration-500 hover:border-accent/50 hover:shadow-[0_8px_50px_rgba(108,99,255,0.15)]">
+                                <div className="relative overflow-hidden rounded-2xl border border-border-subtle bg-surface p-6 transition-all duration-500 hover:border-accent/50 hover:shadow-[0_8px_50px_rgba(108,99,255,0.15)]">
                                     {/* Gradient Overlay */}
                                     <div
                                         className={`absolute inset-0 bg-gradient-to-br ${step.gradient} opacity-0 transition-opacity duration-500 group-hover:opacity-100`}

@@ -51,16 +51,16 @@ export default function Navbar() {
         <>
             <nav
                 className={cn(
-                    "fixed left-0 right-0 top-0 z-50 transition-all duration-300",
+                    "fixed left-0 right-0 top-0 z-50 transition-all duration-500 px-6 py-4",
                     scrolled
-                        ? "border-b border-border-subtle bg-bg-primary/80 shadow-lg backdrop-blur-md"
-                        : "bg-transparent backdrop-blur-md"
+                        ? "bg-bg-primary/95 backdrop-blur-md border-b border-white/5 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+                        : "bg-transparent"
                 )}
             >
-                <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-                    <div className="font-code text-xl font-medium text-text-primary">
-                        &gt; ahmed.code
-                        <span className="cursor-blink ml-1 inline-block">
+                <div className="mx-auto flex max-w-7xl items-center justify-between">
+                    <div className="font-display text-xl font-bold tracking-tight text-text-primary">
+                        <span className="text-accent">&gt;ahmed.code</span>
+                        <span className="cursor-blink ml-0.5 inline-block text-accent">
                             _
                         </span>
                     </div>

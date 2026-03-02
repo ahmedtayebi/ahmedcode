@@ -128,7 +128,7 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="bg-bg-secondary px-6 py-24">
+        <section id="contact" className="section-glow px-6 py-24">
             <div className="mx-auto max-w-3xl">
                 <AnimatedSection>
                     <SectionLabel number="04" name="contact" />
@@ -223,7 +223,7 @@ export default function Contact() {
                             variants={fadeIn}
                             initial="hidden"
                             animate="visible"
-                            className="rounded-xl border border-accent bg-accent-glow p-8 text-center"
+                            className="rounded-xl border border-accent bg-bg-secondary p-8 text-center"
                         >
                             <div className="font-code mb-2 text-code-green">
                                 &gt; message_sent ✓

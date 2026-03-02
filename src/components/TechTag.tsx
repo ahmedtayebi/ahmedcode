@@ -16,8 +16,8 @@ export default function TechTag({ label, size = "md" }: TechTagProps) {
     return (
         <span
             className={cn(
-                "inline-block rounded-md border border-border-subtle bg-surface font-code text-text-secondary transition-all duration-200",
-                "hover:border-accent hover:text-accent",
+                "inline-block rounded-full border border-white/10 bg-bg-secondary/30 backdrop-blur-sm font-code text-text-secondary transition-all duration-300",
+                "hover:border-accent/40 hover:text-accent hover:shadow-[0_0_15px_rgba(129,140,248,0.2)]",
                 sizeClasses[size]
             )}
         >

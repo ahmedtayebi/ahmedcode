@@ -26,11 +26,11 @@ export default function GlowButton({
 
     const variantClasses = {
         primary:
-            "bg-accent text-white font-display hover:bg-accent-hover hover:shadow-[0_0_30px_rgba(108,99,255,0.4)]",
+            "bg-accent text-white font-display hover:bg-accent-hover hover:shadow-[0_0_30px_rgba(129,140,248,0.4)]",
         ghost:
-            "border border-accent bg-transparent text-accent font-display hover:bg-accent hover:text-white",
+            "border border-accent/50 bg-accent/5 text-accent font-display hover:bg-accent hover:text-white backdrop-blur-sm",
         terminal:
-            "border border-border-subtle bg-surface font-code text-text-secondary hover:border-accent hover:text-accent before:content-['>_']",
+            "border border-white/10 bg-bg-secondary/50 backdrop-blur-md font-code text-text-secondary hover:border-accent hover:text-accent before:content-['>_']",
     };
 
     const Component = href ? motion.a : motion.button;

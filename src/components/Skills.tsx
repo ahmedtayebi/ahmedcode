@@ -61,7 +61,7 @@ export default function Skills() {
     };
 
     return (
-        <section id="skills" className="px-6 py-24">
+        <section id="skills" className="section-glow relative py-24">
             <div className="mx-auto max-w-7xl">
                 <AnimatedSection>
                     <SectionLabel number="03" name="skills" />
@@ -132,58 +132,61 @@ export default function Skills() {
                                         variants={fadeIn}
                                         initial="hidden"
                                         whileInView="visible"
+                                        whileHover={{ y: -5 }}
                                         viewport={{ once: true }}
                                         className={cn(
-                                            "rounded-xl border bg-surface p-6 transition-all duration-300",
+                                            "rounded-2xl border transition-all duration-500 p-8 flex flex-col justify-between",
                                             isActive
-                                                ? "border-accent shadow-[0_0_20px_rgba(108,99,255,0.15)]"
-                                                : "border-border-subtle"
+                                                ? "border-white/10 bg-bg-secondary shadow-[0_10px_30px_rgba(0,0,0,0.4)]"
+                                                : "border-white/5 bg-surface opacity-60 grayscale scale-95"
                                         )}
                                     >
-                                        <h3 className="font-code mb-4 text-sm uppercase tracking-wider text-accent">
-                                            {category}
-                                        </h3>
-                                        <div className="space-y-3">
-                                            {categorySkills.map(
-                                                (skill, index) => (
-                                                    <div
-                                                        key={`${skill.name}-${animationKey}`}
-                                                    >
-                                                        <div className="mb-1 flex justify-between text-xs">
-                                                            <span className="font-display text-text-secondary">
-                                                                {skill.name}
-                                                            </span>
-                                                            <span className="font-code text-accent">
-                                                                {
-                                                                    skill.percentage
-                                                                }
-                                                                %
-                                                            </span>
+                                        <div>
+                                            <h3 className="font-code mb-6 text-xs uppercase tracking-[0.3em] text-accent font-bold">
+                                                {category}
+                                            </h3>
+                                            <div className="space-y-5">
+                                                {categorySkills.map(
+                                                    (skill, index) => (
+                                                        <div
+                                                            key={`${skill.name}-${animationKey}`}
+                                                        >
+                                                            <div className="mb-2 flex justify-between text-xs items-center">
+                                                                <span className="font-display text-text-primary/90 font-medium tracking-tight">
+                                                                    {skill.name}
+                                                                </span>
+                                                                <span className="font-code text-[10px] text-text-secondary opacity-80">
+                                                                    {
+                                                                        skill.percentage
+                                                                    }
+                                                                    %
+                                                                </span>
+                                                            </div>
+                                                            <div className="h-[2px] overflow-hidden rounded-full bg-white/5">
+                                                                <motion.div
+                                                                    initial={{
+                                                                        width: 0,
+                                                                    }}
+                                                                    whileInView={{
+                                                                        width: `${skill.percentage}%`,
+                                                                    }}
+                                                                    viewport={{
+                                                                        once: false,
+                                                                    }}
+                                                                    transition={{
+                                                                        duration: 1.5,
+                                                                        delay:
+                                                                            index *
+                                                                            0.1,
+                                                                        ease: [0.16, 1, 0.3, 1], // Custom cubic-bezier for smoother feel
+                                                                    }}
+                                                                    className="h-full rounded-full bg-gradient-to-r from-accent to-accent-secondary shadow-[0_0_15px_rgba(129,140,248,0.4)]"
+                                                                />
+                                                            </div>
                                                         </div>
-                                                        <div className="h-1.5 overflow-hidden rounded-full bg-border-subtle">
-                                                            <motion.div
-                                                                initial={{
-                                                                    width: 0,
-                                                                }}
-                                                                whileInView={{
-                                                                    width: `${skill.percentage}%`,
-                                                                }}
-                                                                viewport={{
-                                                                    once: false,
-                                                                }}
-                                                                transition={{
-                                                                    duration: 1.2,
-                                                                    delay:
-                                                                        index *
-                                                                        0.1,
-                                                                    ease: "easeOut",
-                                                                }}
-                                                                className="h-full rounded-full bg-accent shadow-[0_0_10px_rgba(108,99,255,0.5)]"
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                )
-                                            )}
+                                                    )
+                                                )}
+                                            </div>
                                         </div>
                                     </motion.div>
                                 );

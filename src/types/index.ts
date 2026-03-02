@@ -17,6 +17,7 @@ export interface Project {
         live?: string;
         caseStudy?: string;
     };
+    galleryImages?: string[];
 }
 
 export interface Skill {

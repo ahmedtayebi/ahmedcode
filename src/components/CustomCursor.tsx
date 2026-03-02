@@ -87,19 +87,19 @@ export default function CustomCursor() {
 
     return (
         <>
-            {/* Inner dot - larger with glow */}
+            {/* Inner dot - sharp and precise */}
             <div
-                className="pointer-events-none fixed left-0 top-0 z-[9999] h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent shadow-[0_0_15px_rgba(108,99,255,0.8)] transition-all duration-100"
+                className="pointer-events-none fixed left-0 top-0 z-[9999] h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent transition-transform duration-100 ease-out"
                 style={{
-                    transform: `translate(${mousePosition.x}px, ${mousePosition.y}px) translate(-50%, -50%)`,
+                    transform: `translate(${mousePosition.x}px, ${mousePosition.y}px) scale(${isPointer ? 0.5 : 1})`,
                 }}
             />
-            {/* Outer ring - larger with glow */}
+            {/* Outer ring - fluid and glowing */}
             <div
                 ref={outerCursorRef}
-                className={`pointer-events-none fixed left-0 top-0 z-[9998] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-accent transition-all duration-300 ${isPointer
-                        ? "h-[70px] w-[70px] bg-accent/20 opacity-80 shadow-[0_0_30px_rgba(108,99,255,0.6)]"
-                        : "h-12 w-12 opacity-50 shadow-[0_0_20px_rgba(108,99,255,0.4)]"
+                className={`pointer-events-none fixed left-0 top-0 z-[9998] -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/30 backdrop-blur-[2px] transition-all duration-500 ease-out ${isPointer
+                    ? "h-16 w-16 bg-accent/5 border-accent/50 shadow-[0_0_40px_rgba(129,140,248,0.3)]"
+                    : "h-10 w-10 bg-transparent shadow-[0_0_20px_rgba(129,140,248,0.1)]"
                     }`}
             />
         </>

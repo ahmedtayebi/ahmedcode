@@ -84,32 +84,54 @@ export default function Hero() {
     return (
         <section
             id="hero"
-            className="relative flex min-h-screen items-center justify-center px-6 py-24"
+            className="mesh-gradient relative flex min-h-screen items-center justify-center px-6 py-32 overflow-hidden"
         >
-            <div
-                className="pointer-events-none absolute inset-0"
-                style={{
-                    background:
-                        "radial-gradient(ellipse at center, rgba(108,99,255,0.05) 0%, transparent 70%)",
-                }}
-            />
+            {/* Animated Spotlights */}
+            <div className="pointer-events-none absolute inset-0 overflow-hidden">
+                <motion.div
+                    animate={{
+                        x: [0, 100, 0],
+                        y: [0, 50, 0],
+                    }}
+                    transition={{
+                        duration: 20,
+                        repeat: Infinity,
+                        ease: "linear"
+                    }}
+                    className="absolute -top-[10%] -left-[10%] h-[40%] w-[40%] rounded-full bg-accent/10 blur-[120px]"
+                />
+                <motion.div
+                    animate={{
+                        x: [0, -100, 0],
+                        y: [0, -50, 0],
+                    }}
+                    transition={{
+                        duration: 25,
+                        repeat: Infinity,
+                        ease: "linear"
+                    }}
+                    className="absolute -bottom-[10%] -right-[10%] h-[40%] w-[40%] rounded-full bg-accent-secondary/10 blur-[120px]"
+                />
+            </div>
 
-            <div className="relative z-10 w-full max-w-[680px]">
-                <TerminalWindow title="~/portfolio — zsh">
-                    <div className="space-y-2">
-                        {displayedLines.map((line, index) => (
-                            <div key={index}>{renderLine(line)}</div>
-                        ))}
-                        {currentLine && (
-                            <div>
-                                {renderLine(
-                                    currentLine,
-                                    currentLineIndex < terminalLines.length
-                                )}
-                            </div>
-                        )}
-                    </div>
-                </TerminalWindow>
+            <div className="relative z-10 w-full max-w-[720px]">
+                <div className="glass rounded-xl p-1 shadow-2xl">
+                    <TerminalWindow title="~/portfolio — zsh">
+                        <div className="space-y-2 p-2">
+                            {displayedLines.map((line, index) => (
+                                <div key={index}>{renderLine(line)}</div>
+                            ))}
+                            {currentLine && (
+                                <div>
+                                    {renderLine(
+                                        currentLine,
+                                        currentLineIndex < terminalLines.length
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                    </TerminalWindow>
+                </div>
 
                 {isComplete && (
                     <motion.div
