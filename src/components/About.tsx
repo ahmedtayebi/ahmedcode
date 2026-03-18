@@ -30,7 +30,7 @@ export default function About() {
                             <TerminalWindow title="ahmed.config.ts">
                                 <div className="space-y-1 text-sm">
                                     <div className="italic text-text-muted">
-                                        // Tayebi Ahmed — Product Engineer
+                                        {"// Tayebi Ahmed — Product Engineer"}
                                     </div>
                                     <div>
                                         <span className="text-code-blue">
@@ -54,7 +54,7 @@ export default function About() {
                                             :
                                         </span>{" "}
                                         <span className="text-code-green">
-                                            "Algeria · Remote-friendly"
+                                            &quot;Algeria · Remote-friendly&quot;
                                         </span>
                                         <span className="text-text-secondary">
                                             ,
@@ -68,7 +68,7 @@ export default function About() {
                                             :
                                         </span>{" "}
                                         <span className="text-code-green">
-                                            "3+ years building products"
+                                            &quot;3+ years building products&quot;
                                         </span>
                                         <span className="text-text-secondary">
                                             ,
@@ -85,19 +85,19 @@ export default function About() {
                                             [
                                         </span>
                                         <span className="text-code-green">
-                                            "Flutter"
+                                            &quot;Flutter&quot;
                                         </span>
                                         <span className="text-text-secondary">
                                             ,
                                         </span>{" "}
                                         <span className="text-code-green">
-                                            "Dart"
+                                            &quot;Dart&quot;
                                         </span>
                                         <span className="text-text-secondary">
                                             ,
                                         </span>{" "}
                                         <span className="text-code-green">
-                                            "Firebase"
+                                            &quot;Firebase&quot;
                                         </span>
                                         <span className="text-text-secondary">
                                             ]
@@ -117,19 +117,19 @@ export default function About() {
                                             [
                                         </span>
                                         <span className="text-code-green">
-                                            "React"
+                                            &quot;React&quot;
                                         </span>
                                         <span className="text-text-secondary">
                                             ,
                                         </span>{" "}
                                         <span className="text-code-green">
-                                            "Next.js"
+                                            &quot;Next.js&quot;
                                         </span>
                                         <span className="text-text-secondary">
                                             ,
                                         </span>{" "}
                                         <span className="text-code-green">
-                                            "TypeScript"
+                                            &quot;TypeScript&quot;
                                         </span>
                                         <span className="text-text-secondary">
                                             ]
@@ -149,19 +149,19 @@ export default function About() {
                                             [
                                         </span>
                                         <span className="text-code-green">
-                                            "Figma"
+                                            &quot;Figma&quot;
                                         </span>
                                         <span className="text-text-secondary">
                                             ,
                                         </span>{" "}
                                         <span className="text-code-green">
-                                            "UX Research"
+                                            &quot;UX Research&quot;
                                         </span>
                                         <span className="text-text-secondary">
                                             ,
                                         </span>{" "}
                                         <span className="text-code-green">
-                                            "Design Systems"
+                                            &quot;Design Systems&quot;
                                         </span>
                                         <span className="text-text-secondary">
                                             ]
@@ -178,7 +178,7 @@ export default function About() {
                                             :
                                         </span>{" "}
                                         <span className="text-code-green">
-                                            "Product-first &gt; feature-first"
+                                            &quot;Product-first &amp;gt; feature-first&quot;
                                         </span>
                                         <span className="text-text-secondary">
                                             ,
@@ -192,8 +192,8 @@ export default function About() {
                                             :
                                         </span>{" "}
                                         <span className="text-code-green">
-                                            "Open for freelance & full-time
-                                            remote"
+                                            &quot;Open for freelance &amp; full-time
+                                            remote&quot;
                                         </span>
                                         <span className="text-text-secondary">
                                             ,
@@ -210,19 +210,19 @@ export default function About() {
                                             [
                                         </span>
                                         <span className="text-code-green">
-                                            "Ship fast"
+                                            &quot;Ship fast&quot;
                                         </span>
                                         <span className="text-text-secondary">
                                             ,
                                         </span>{" "}
                                         <span className="text-code-green">
-                                            "Design is thinking"
+                                            &quot;Design is thinking&quot;
                                         </span>
                                         <span className="text-text-secondary">
                                             ,
                                         </span>{" "}
                                         <span className="text-code-green">
-                                            "Code is craft"
+                                            &gt; &quot;Code is craft&quot;
                                         </span>
                                         <span className="text-text-secondary">
                                             ]

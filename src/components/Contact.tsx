@@ -133,7 +133,7 @@ export default function Contact() {
                 <AnimatedSection>
                     <SectionLabel number="04" name="contact" />
                     <h2 className="font-display mb-16 text-center text-4xl font-bold text-text-primary md:text-5xl">
-                        Let's Build Together
+                        Let&apos;s Build Together
                     </h2>
 
                     <TerminalWindow title="contact.sh" className="mb-8">
@@ -144,7 +144,7 @@ export default function Contact() {
                             <div className="text-code-green">
                                 Ready to build something remarkable.
                             </div>
-                            <div className="text-code-green">Let's talk.</div>
+                            <div className="text-code-green">Let&apos;s talk.</div>
                         </div>
                     </TerminalWindow>
 
@@ -162,7 +162,7 @@ export default function Contact() {
                                     htmlFor="name"
                                     className="font-code mb-2 block text-sm text-code-blue"
                                 >
-                                    // your_name
+                                    {"// your_name"}
                                 </label>
                                 <input
                                     type="text"
@@ -181,7 +181,7 @@ export default function Contact() {
                                     htmlFor="email"
                                     className="font-code mb-2 block text-sm text-code-blue"
                                 >
-                                    // your_email
+                                    {"// your_email"}
                                 </label>
                                 <input
                                     type="email"
@@ -200,7 +200,7 @@ export default function Contact() {
                                     htmlFor="message"
                                     className="font-code mb-2 block text-sm text-code-blue"
                                 >
-                                    // message
+                                    {"// message"}
                                 </label>
                                 <textarea
                                     id="message"
@@ -226,10 +226,10 @@ export default function Contact() {
                             className="rounded-xl border border-accent bg-bg-secondary p-8 text-center"
                         >
                             <div className="font-code mb-2 text-code-green">
-                                &gt; message_sent ✓
+                                &gt; {"message_sent ✓"}
                             </div>
                             <p className="font-display text-text-secondary">
-                                I'll get back to you within 24 hours.
+                                I&apos;ll get back to you within 24 hours.
                             </p>
                         </motion.div>
                     )}

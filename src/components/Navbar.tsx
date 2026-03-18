@@ -143,7 +143,7 @@ export default function Navbar() {
                             animate="visible"
                             className="flex h-full flex-col items-center justify-center gap-8"
                         >
-                            {NAV_LINKS.map((link, index) => (
+                            {NAV_LINKS.map((link) => (
                                 <motion.button
                                     key={link.href}
                                     variants={{
