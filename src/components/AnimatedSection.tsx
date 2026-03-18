@@ -21,7 +21,7 @@ export default function AnimatedSection({
             visible: {
                 ...fadeUp.visible,
                 transition: {
-                    ...(fadeUp.visible as any).transition,
+                    ...(fadeUp.visible as { transition?: { delay?: number } }).transition,
                     delay,
                 },
             },

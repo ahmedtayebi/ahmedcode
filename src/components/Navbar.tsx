@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS } from "@/lib/constants";
 import GlowButton from "@/components/GlowButton";
+import ThemeToggle from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 import { stagger } from "@/lib/animations";
 
@@ -53,7 +54,7 @@ export default function Navbar() {
                 className={cn(
                     "fixed left-0 right-0 top-0 z-50 transition-all duration-500 px-6 py-4",
                     scrolled
-                        ? "bg-bg-primary/95 backdrop-blur-md border-b border-white/5 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+                        ? "bg-bg-primary/95 backdrop-blur-md border-b border-border-subtle py-3 shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
                         : "bg-transparent"
                 )}
             >
@@ -98,6 +99,7 @@ export default function Navbar() {
                             );
                         })}
 
+                        <ThemeToggle />
                         <GlowButton variant="ghost">Hire Me</GlowButton>
                     </div>
 
@@ -143,7 +145,7 @@ export default function Navbar() {
                             animate="visible"
                             className="flex h-full flex-col items-center justify-center gap-8"
                         >
-                            {NAV_LINKS.map((link, index) => (
+                            {NAV_LINKS.map((link) => (
                                 <motion.button
                                     key={link.href}
                                     variants={{
@@ -162,7 +164,9 @@ export default function Navbar() {
                                     hidden: { opacity: 0, y: 20 },
                                     visible: { opacity: 1, y: 0 },
                                 }}
+                                className="flex flex-col items-center gap-4"
                             >
+                                <ThemeToggle />
                                 <GlowButton variant="primary">
                                     Hire Me
                                 </GlowButton>

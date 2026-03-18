@@ -103,7 +103,7 @@ export default function Process() {
                                 whileInView="visible"
                                 viewport={{ once: true, margin: "-100px" }}
                             >
-                                {processSteps.map((step, index) => (
+                                {processSteps.map((step) => (
                                     <motion.div
                                         key={step.number}
                                         variants={fadeUp}

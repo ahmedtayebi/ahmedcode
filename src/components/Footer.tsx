@@ -141,7 +141,7 @@ export default function Footer() {
                         className="space-y-3"
                     >
                         <h3 className="font-code text-sm text-accent">
-                            // quick_links
+                            {"// quick_links"}
                         </h3>
                         <nav className="flex flex-col gap-2">
                             {quickLinks.map((link) => (
@@ -201,7 +201,7 @@ export default function Footer() {
                     viewport={{ once: true }}
                     className="mt-12 border-t border-border-subtle pt-6 text-center font-code text-xs text-text-muted"
                 >
-                    // designed & built by Tayebi Ahmed · 2026
+                    {"// designed & built by Tayebi Ahmed · 2026"}
                 </motion.div>
             </div>
         </footer>

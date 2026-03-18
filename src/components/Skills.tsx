@@ -137,8 +137,8 @@ export default function Skills() {
                                         className={cn(
                                             "rounded-2xl border transition-all duration-500 p-8 flex flex-col justify-between",
                                             isActive
-                                                ? "border-white/10 bg-bg-secondary shadow-[0_10px_30px_rgba(0,0,0,0.4)]"
-                                                : "border-white/5 bg-surface opacity-60 grayscale scale-95"
+                                                ? "border-border-subtle bg-bg-secondary shadow-[0_10px_30px_var(--accent-glow)]"
+                                                : "border-border-subtle bg-surface opacity-60 grayscale scale-95"
                                         )}
                                     >
                                         <div>
@@ -162,7 +162,7 @@ export default function Skills() {
                                                                     %
                                                                 </span>
                                                             </div>
-                                                            <div className="h-[2px] overflow-hidden rounded-full bg-white/5">
+                                                            <div className="h-[2px] overflow-hidden rounded-full bg-border-subtle">
                                                                 <motion.div
                                                                     initial={{
                                                                         width: 0,

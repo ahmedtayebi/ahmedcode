@@ -4,6 +4,28 @@
 
 :root {
   --nav-height: 72px;
+  /* Light Mode (default) */
+  --bg-primary: #F8F9FC;
+  --bg-secondary: #F0F2F8;
+  --surface: #FFFFFF;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --accent: #6366F1;
+  --accent-secondary: #EC4899;
+  --accent-hover: #4F46E5;
+  --accent-glow: rgba(99, 102, 241, 0.2);
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --code-green: #059669;
+  --code-blue: #0284C7;
+  --code-purple: #7C3AED;
+  --code-orange: #EA580C;
+  --glass-bg: rgba(255, 255, 255, 0.80);
+  --glass-border: rgba(0, 0, 0, 0.08);
+}
+
+/* Dark Mode */
+.dark {
   --bg-primary: #050508;
   --bg-secondary: #0A0A0F;
   --surface: #0F0F1A;
@@ -22,8 +44,6 @@
   --glass-bg: #0A0A0F;
   --glass-border: rgba(255, 255, 255, 0.1);
 }
-
-/* Light theme removed - dark mode only */
 
 html {
   font-size: 16px;
@@ -79,6 +99,10 @@ body::before {
   .glass {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .dark .glass {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
   }
 
@@ -86,9 +110,9 @@ body::before {
     position: relative;
     background-color: transparent;
     background-image:
-      radial-gradient(at 0% 0%, rgba(129, 140, 248, 0.15) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(244, 114, 182, 0.1) 0px, transparent 50%),
-      radial-gradient(at 50% 100%, rgba(244, 114, 182, 0.05) 0px, transparent 50%);
+      radial-gradient(at 0% 0%, var(--accent-glow) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.08) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(236, 72, 153, 0.04) 0px, transparent 50%);
   }
 
   /* Global background glow for sections */
@@ -100,7 +124,7 @@ body::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, rgba(129, 140, 248, 0.03), transparent 70%);
+    background: radial-gradient(circle at center, var(--accent-glow), transparent 70%);
     pointer-events: none;
     z-index: -1;
   }
