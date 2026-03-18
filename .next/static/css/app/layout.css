@@ -925,6 +925,9 @@ video {
 .h-8 {
   height: 2rem;
 }
+.h-9 {
+  height: 2.25rem;
+}
 .h-\[220px\] {
   height: 220px;
 }
@@ -999,6 +1002,9 @@ video {
 }
 .w-8 {
   width: 2rem;
+}
+.w-9 {
+  width: 2.25rem;
 }
 .w-\[220px\] {
   width: 220px;
@@ -1257,9 +1263,6 @@ video {
 }
 .border-white\/5 {
   border-color: rgb(255 255 255 / 0.05);
-}
-.border-white\/\[0\.03\] {
-  border-color: rgb(255 255 255 / 0.03);
 }
 .bg-\[\#28C840\] {
   --tw-bg-opacity: 1;
@@ -1588,6 +1591,9 @@ video {
 .tracking-widest {
   letter-spacing: 0.1em;
 }
+.text-\[\#000000ff\] {
+  color: #000000ff;
+}
 .text-\[\#00599C\] {
   --tw-text-opacity: 1;
   color: rgb(0 89 156 / var(--tw-text-opacity, 1));
@@ -1786,14 +1792,14 @@ video {
   --tw-shadow-colored: 0 0 50px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
-.shadow-\[0_10px_30px_rgba\(0\2c 0\2c 0\2c 0\.4\)\] {
-  --tw-shadow: 0 10px 30px rgba(0,0,0,0.4);
+.shadow-\[0_10px_30px_var\(--accent-glow\)\] {
+  --tw-shadow: 0 10px 30px var(--accent-glow);
   --tw-shadow-colored: 0 10px 30px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
-.shadow-\[0_10px_30px_rgba\(0\2c 0\2c 0\2c 0\.5\)\] {
-  --tw-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  --tw-shadow-colored: 0 10px 30px var(--tw-shadow-color);
+.shadow-\[0_8px_32px_rgba\(0\2c 0\2c 0\2c 0\.12\)\] {
+  --tw-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  --tw-shadow-colored: 0 8px 32px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .shadow-xl {
@@ -1887,15 +1893,18 @@ video {
 .glass {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+  }
+.dark .glass {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
   }
 .mesh-gradient {
     position: relative;
     background-color: transparent;
     background-image:
-      radial-gradient(at 0% 0%, rgba(129, 140, 248, 0.15) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(244, 114, 182, 0.1) 0px, transparent 50%),
-      radial-gradient(at 50% 100%, rgba(244, 114, 182, 0.05) 0px, transparent 50%);
+      radial-gradient(at 0% 0%, var(--accent-glow) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.08) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(236, 72, 153, 0.04) 0px, transparent 50%);
   }
 /* Global background glow for sections */
 .section-glow {
@@ -1905,13 +1914,35 @@ video {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, rgba(129, 140, 248, 0.03), transparent 70%);
+    background: radial-gradient(circle at center, var(--accent-glow), transparent 70%);
     pointer-events: none;
     z-index: -1;
   }
 
 :root {
   --nav-height: 72px;
+  /* Light Mode (default) */
+  --bg-primary: #F8F9FC;
+  --bg-secondary: #F0F2F8;
+  --surface: #FFFFFF;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --accent: #6366F1;
+  --accent-secondary: #EC4899;
+  --accent-hover: #4F46E5;
+  --accent-glow: rgba(99, 102, 241, 0.2);
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --code-green: #059669;
+  --code-blue: #0284C7;
+  --code-purple: #7C3AED;
+  --code-orange: #EA580C;
+  --glass-bg: rgba(255, 255, 255, 0.80);
+  --glass-border: rgba(0, 0, 0, 0.08);
+}
+
+/* Dark Mode */
+.dark {
   --bg-primary: #050508;
   --bg-secondary: #0A0A0F;
   --surface: #0F0F1A;
@@ -1930,8 +1961,6 @@ video {
   --glass-bg: #0A0A0F;
   --glass-border: rgba(255, 255, 255, 0.1);
 }
-
-/* Light theme removed - dark mode only */
 
 html {
   font-size: 16px;
@@ -2070,8 +2099,8 @@ ol {
   list-style: none;
 }
 
-.before\:content-\[\'\>_\'\]::before {
-  --tw-content: '> ';
+.before\:content-\[\'\>\\u00a0\'\]::before {
+  --tw-content: '>\u00a0';
   content: var(--tw-content);
 }
 
@@ -2095,6 +2124,10 @@ ol {
 
 .hover\:bg-accent-hover:hover {
   background-color: var(--accent-hover);
+}
+
+.hover\:bg-surface:hover {
+  background-color: var(--surface);
 }
 
 .hover\:bg-white\/10:hover {

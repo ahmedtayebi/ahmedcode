@@ -3,9 +3,8 @@
 import { motion } from "framer-motion";
 import { 
     SiReact, SiNextdotjs, SiFlutter, SiFigma, SiTailwindcss, SiTypescript, SiFramer,
-    SiPython, SiJavascript, SiCplusplus, SiGo, SiRust, SiDocker, SiGit, SiVercel,
-    SiFirebase, SiNodedotjs, SiMongodb, SiPostgresql, SiPhp, SiRuby,
-    SiPostman, SiSwift, SiRedis, SiSass
+    SiPython, SiJavascript, SiDocker, SiGit, SiVercel,
+    SiFirebase, SiNodedotjs, SiPostgresql,
 } from "react-icons/si";
 
 interface TechIcon {
@@ -21,12 +20,12 @@ const techLogos: TechIcon[] = [
     // Orbit 1 (Inner) - r=80
     { Icon: SiReact, color: "text-[#61DAFB]", radius: 80, speed: 20, delay: 0, name: "React" },
     { Icon: SiTypescript, color: "text-[#3178C6]", radius: 80, speed: 20, delay: 5, name: "TypeScript" },
-    { Icon: SiNextdotjs, color: "text-white", radius: 80, speed: 20, delay: 10, name: "Next.js" },
+    { Icon: SiNextdotjs, color: "text-[#000000ff]", radius: 80, speed: 20, delay: 10, name: "Next.js" },
     
     // Orbit 2 - r=130
     { Icon: SiJavascript, color: "text-[#F7DF1E]", radius: 130, speed: 28, delay: 2, name: "JavaScript" },
     { Icon: SiTailwindcss, color: "text-[#06B6D4]", radius: 130, speed: 28, delay: 7, name: "Tailwind" },
-    { Icon: SiFramer, color: "text-white", radius: 130, speed: 28, delay: 12, name: "Motion" },
+    { Icon: SiFramer, color: "text-[#000000ff]", radius: 130, speed: 28, delay: 12, name: "Motion" },
     { Icon: SiNodedotjs, color: "text-[#339933]", radius: 130, speed: 28, delay: 17, name: "Node.js" },
 
     // Orbit 3 - r=180
@@ -40,7 +39,7 @@ const techLogos: TechIcon[] = [
     { Icon: SiFigma, color: "text-[#F24E1E]", radius: 230, speed: 48, delay: 0, name: "Figma" },
     { Icon: SiDocker, color: "text-[#2496ED]", radius: 230, speed: 48, delay: 8, name: "Docker" },
     { Icon: SiGit, color: "text-[#F05032]", radius: 230, speed: 48, delay: 16, name: "Git" },
-    { Icon: SiVercel, color: "text-white", radius: 230, speed: 48, delay: 24, name: "Vercel" },
+    { Icon: SiVercel, color: "text-[#000000ff]", radius: 230, speed: 48, delay: 24, name: "Vercel" },
     // { Icon: SiGo, color: "text-[#00ADD8]", radius: 230, speed: 48, delay: 32, name: "Go" },
 
     // Orbit 5 (Outer) - r=280
@@ -80,14 +79,14 @@ export default function TechOrbital() {
             {orbits.map((radius) => (
                 <div 
                     key={radius}
-                    className="absolute rounded-full border border-white/[0.03] pointer-events-none"
+                    className="absolute rounded-full border border-border-subtle pointer-events-none"
                     style={{
                         width: radius * 2,
                         height: radius * 2,
                     }}
                 >
                     {/* Subtle Inner Glow for Ring */}
-                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/10 to-transparent" />
+                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
                 </div>
             ))}
 
@@ -130,7 +129,7 @@ export default function TechOrbital() {
                                     ease: "linear",
                                     delay: -tech.delay,
                                 }}
-                                className="group relative flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-surface/30 backdrop-blur-md shadow-xl transition-all hover:border-accent/80 hover:bg-surface/90 hover:scale-125 hover:z-50 active:scale-95"
+                                className="group relative flex h-14 w-14 items-center justify-center rounded-xl border border-border-subtle bg-surface/80 backdrop-blur-md shadow-xl transition-all hover:border-accent/80 hover:bg-surface hover:scale-125 hover:z-50 active:scale-95"
                                 data-cursor="pointer"
                             >
                                 <tech.Icon className={`h-7 w-7 ${tech.color} transition-all duration-300 group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]`} />

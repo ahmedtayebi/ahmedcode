@@ -30,7 +30,7 @@ export default function GlowButton({
         ghost:
             "border border-accent/50 bg-accent/5 text-accent font-display hover:bg-accent hover:text-white backdrop-blur-sm",
         terminal:
-            "border border-white/10 bg-bg-secondary/50 backdrop-blur-md font-code text-text-secondary hover:border-accent hover:text-accent before:content-['>_']",
+            "border border-border-subtle bg-bg-secondary/50 backdrop-blur-md font-code text-text-secondary hover:border-accent hover:text-accent before:content-['>\u00a0']",
     };
 
     const Component = href ? motion.a : motion.button;
